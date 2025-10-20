@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>我的個人首頁</title>
+<style>
+  /* === Reset & 基本設定 === */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", "Noto Sans TC", sans-serif;
+  }
+
+  body {
+    background: linear-gradient(135deg, #f9d1d1, #ffe4f0, #fcd5ce);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #333;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    animation: fadeInDown 1s ease;
+  }
+
+  p.subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    animation: fadeInDown 1.3s ease;
+  }
+
+  /* === Link Cards === */
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .link {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(6px);
+  }
+
+  .link:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  }
+
+  /* === 圖像與動畫 === */
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 3px solid white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === RWD === */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+    .link {
+      font-size: 1rem;
+      padding: 0.9rem;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  /* 底部文字 */
+  footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #777;
+    animation: fadeInDown 1.8s ease;
+  }
+
+  /* 動態背景泡泡效果 */
+  .bubble {
+    position: absolute;
+    bottom: -50px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: rise 10s infinite ease-in;
+  }
+
+  @keyframes rise {
+    from {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-120vh) scale(1.3);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+  <!-- 動態泡泡 -->
+  <script>
+    // 產生隨機泡泡效果
+    for(let i=0; i<12; i++){
+      let b = document.createElement("div");
+      b.classList.add("bubble");
+      b.style.width = b.style.height = Math.random()*40 + 20 + "px";
+      b.style.left = Math.random()*100 + "%";
+      b.style.animationDuration = (Math.random()*5 + 7) + "s";
+      document.body.appendChild(b);
+    }
+  </script>
+
+  <!-- 頭像 -->
+  <img src="https://i.imgur.com/9K0kzG9.jpg" alt="avatar" class="avatar">
+
+  <!-- 名稱與副標題 -->
+  <h1>你的名字</h1>
+  <p class="subtitle">喜歡美妝與時尚的高三生 💄✨</p>
+
+  <!-- 連結區 -->
+  <div class="links">
+    <a href="https://github.com/你的帳號" target="_blank" class="link">🌸 GitHub</a>
+    <a href="mailto:你的信箱@gmail.com" class="link">📧 Email</a>
+    <a href="https://www.linkedin.com/in/你的帳號" target="_blank" class="link">💼 LinkedIn</a>
+    <a href="https://www.instagram.com/你的帳號" target="_blank" class="link">📸 Instagram</a>
+  </div>
+
+  <footer>© 2025 by 你的名字 | Made with 💕</footer>
+</body>
+</html>
